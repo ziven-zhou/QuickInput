@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickInput</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="app" class="input-window">
+    <header class="toolbar" id="drag-region">
+      <div class="toolbar-left">
+        <select id="mode-select" class="mode-select" title="内容模式">
+          <option value="plain">纯文本</option>
+          <option value="markdown">Markdown</option>
+        </select>
+        <span id="mode-hint" class="mode-hint"></span>
+      </div>
+      <div class="toolbar-right">
+        <span id="char-count" class="char-count">0 字符</span>
+        <button id="clear-btn" class="icon-btn" title="清空">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </button>
+        <button id="cancel-btn" class="btn btn-ghost">取消</button>
+        <button id="confirm-btn" class="btn btn-primary">确认</button>
+      </div>
+    </header>
+    <span id="status-msg" class="status-msg hidden"></span>
+    <main class="editor-area">
+      <textarea id="input-area" class="input-area plain-mode" autofocus placeholder="输入内容，按 ⌥+↵ 仅粘贴，Enter 换行..."></textarea>
+      <div id="preview-area" class="preview-area hidden"></div>
+    </main>
+    <footer class="statusbar">
+      <div class="resize-handle"></div>
+      <span class="status-text" id="shortcut-hints">
+        <span class="shortcut-item"><kbd data-hotkey="trigger">⌥Space</kbd> 唤起</span>
+        <span class="shortcut-item"><kbd data-hotkey="confirm">⌥↵</kbd> 仅粘贴</span>
+        <span class="shortcut-item" id="send-shortcut-hint" hidden><kbd>⇧↵</kbd> 粘贴并发送</span>
+        <span class="shortcut-item"><kbd>⌥⌫</kbd> 清空</span>
+        <span class="shortcut-item"><kbd data-hotkey="cancel">Esc</kbd> 取消</span>
+        <span class="shortcut-item"><kbd data-hotkey="content">⌥R</kbd> 内容库</span>
+        <span class="shortcut-item"><kbd data-hotkey="settings">⌥S</kbd> 设置</span>
+      </span>
+      <span class="footer-actions">
+        <button id="content-btn" class="link-btn" title="打开内容库">内容库</button>
+        <button id="settings-btn" class="link-btn" title="打开设置">设置</button>
+      </span>
+    </footer>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

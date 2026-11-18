@@ -1,0 +1,83 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "QuickInput",
+  "version": "0.1.0",
+  "identifier": "com.quickinput.quickinput",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "QuickInput",
+        "url": "/",
+        "width": 720,
+        "height": 240,
+        "minWidth": 400,
+        "minHeight": 240,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "visible": false,
+        "resizable": true,
+        "skipTaskbar": true,
+        "shadow": false
+      },
+      {
+        "label": "settings",
+        "title": "QuickInput 设置",
+        "url": "/settings.html",
+        "width": 680,
+        "height": 620,
+        "minWidth": 600,
+        "minHeight": 560,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "visible": false,
+        "resizable": true,
+        "skipTaskbar": false
+      },
+      {
+        "label": "content",
+        "title": "QuickInput 内容库",
+        "url": "/content.html",
+        "width": 600,
+        "height": 560,
+        "minWidth": 540,
+        "minHeight": 480,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "visible": false,
+        "resizable": true,
+        "skipTaskbar": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "macOS": {
+      "entitlements": "entitlements.plist"
+    },
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "Global quick input tool",
+    "longDescription": "Press a global hotkey anywhere, type or paste content, and confirm to paste it into the active application.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

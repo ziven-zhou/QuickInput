@@ -1,0 +1,27 @@
+# Dependencies and build output
+/node_modules/
+/dist/
+/src-tauri/target/
+/src-tauri/gen/schemas/
+
+# Local editor settings
+/.idea/
+/.vscode/
+/.codex/.obsidian/
+
+# OS files and temporary editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs and test coverage
+*.log
+/coverage/
+
+# Local environment files (keep example templates)
+.env
+.env.*
+!.env.example
+!.env.*.example

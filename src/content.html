@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickInput 内容库</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="content-window">
+    <header id="drag-region" class="panel-header">
+      <div class="panel-title"><h1>内容库</h1></div>
+      <button id="close-content-btn" class="icon-btn" title="关闭内容库">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </header>
+    <div class="content-toolbar">
+      <span id="content-count" class="content-count">0 条</span>
+      <input type="text" id="search-input" class="search-input" placeholder="搜索名称或内容" aria-controls="content-list" />
+      <span class="toolbar-spacer"></span>
+      <button id="add-content-btn" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        新增内容
+      </button>
+    </div>
+    <main id="content-list" class="content-list" role="listbox" aria-label="内容列表"></main>
+    <div id="content-empty" class="content-empty hidden">还没有内容，点击“新增内容”添加</div>
+  </div>
+
+  <div id="editor-modal" class="modal-overlay hidden">
+    <div class="modal-card editor-card">
+      <div class="modal-header">
+        <h2 id="editor-modal-title">新增内容</h2>
+        <button id="close-editor-btn" class="icon-btn" title="关闭编辑">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="content-editor">
+        <label for="editor-title-input">名称（可选）</label>
+        <input id="editor-title-input" class="editor-input" type="text" placeholder="例如：查看磁盘占用" />
+        <label for="editor-textarea">内容</label>
+        <textarea id="editor-textarea" class="editor-textarea" placeholder="输入需要保存的命令或文本"></textarea>
+        <label for="editor-mode-select">格式</label>
+        <select id="editor-mode-select" class="editor-select">
+          <option value="plain">纯文本</option>
+          <option value="markdown">Markdown</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <span class="toolbar-spacer"></span>
+        <button id="cancel-editor-btn" class="btn btn-ghost btn-sm">取消</button>
+        <button id="save-editor-btn" class="btn btn-primary btn-sm">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="preview-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="preview-modal-title">预览</h2>
+        <button id="close-preview-btn" class="icon-btn" title="关闭预览">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div id="preview-modal-content" class="modal-body"></div>
+      <div class="modal-footer">
+        <span id="preview-modal-meta" class="modal-meta"></span>
+        <span class="toolbar-spacer"></span>
+        <button id="preview-edit-btn" class="btn btn-ghost btn-sm">编辑</button>
+        <button id="preview-paste-btn" class="btn btn-primary btn-sm">粘贴</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirm-modal" class="modal-overlay hidden">
+    <div class="modal-card confirm-card">
+      <div class="modal-body">
+        <p id="confirm-text"></p>
+      </div>
+      <div class="modal-footer">
+        <span class="toolbar-spacer"></span>
+        <button id="confirm-cancel-btn" class="btn btn-ghost btn-sm">取消</button>
+        <button id="confirm-ok-btn" class="btn btn-primary btn-sm">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="/content.js"></script>
+</body>
+</html>

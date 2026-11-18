@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickInput 设置</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="settings-window">
+    <header id="drag-region" class="panel-header">
+      <div class="panel-title">
+        <h1>设置</h1>
+        <span id="autosave-state" class="autosave-state" aria-live="polite"></span>
+      </div>
+      <button id="close-settings-btn" class="icon-btn" title="关闭设置">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </header>
+
+    <main class="settings-body">
+      <div class="settings-grid">
+        <div class="settings-column">
+          <section class="settings-section">
+            <h2>快捷键</h2>
+            <div class="setting-row">
+              <label>唤起输入窗口</label>
+              <button id="hotkey-trigger" class="hotkey-recorder" data-key="trigger">点击录制</button>
+            </div>
+            <div class="setting-row">
+              <label>打开内容库</label>
+              <button id="hotkey-content" class="hotkey-recorder" data-key="content">点击录制</button>
+            </div>
+            <div class="setting-row">
+              <label>打开设置</label>
+              <button id="hotkey-settings" class="hotkey-recorder" data-key="settings">点击录制</button>
+            </div>
+            <div class="setting-row">
+              <label>确认并粘贴</label>
+              <button id="hotkey-confirm" class="hotkey-recorder" data-key="confirm">点击录制</button>
+            </div>
+            <div class="setting-row">
+              <label>取消并关闭</label>
+              <button id="hotkey-cancel" class="hotkey-recorder" data-key="cancel">点击录制</button>
+            </div>
+          </section>
+
+          <section class="settings-section">
+            <h2>启动</h2>
+            <div class="setting-row">
+              <label for="autostart-checkbox">开机时自动启动</label>
+              <label class="switch">
+                <input type="checkbox" id="autostart-checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </section>
+
+          <section class="settings-section">
+            <h2>剪贴板</h2>
+            <div class="setting-row">
+              <label for="restore-clipboard-checkbox">粘贴后恢复剪贴板</label>
+              <label class="switch">
+                <input type="checkbox" id="restore-clipboard-checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="setting-row">
+              <div class="setting-label">
+                <label for="paste-and-send-checkbox">启用粘贴并发送快捷键</label>
+                <span class="setting-description">开启后，Shift + Enter 粘贴并按一次回车；原确认快捷键仍仅粘贴。目标应用需支持回车发送。</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="paste-and-send-checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="setting-row">
+              <label for="keep-open-checkbox">粘贴后窗口保持打开</label>
+              <label class="switch">
+                <input type="checkbox" id="keep-open-checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <div class="settings-column">
+          <section class="settings-section">
+            <h2>窗口</h2>
+            <div class="setting-row">
+              <label for="position-select">弹出位置</label>
+              <select id="position-select">
+                <option value="center">屏幕居中</option>
+                <option value="cursor">光标附近</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <div class="setting-label">
+                <label for="remember-position-checkbox">记住上次位置</label>
+                <span class="setting-description">重启后恢复；光标模式优先。</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="remember-position-checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="setting-row">
+              <div class="setting-label">
+                <label for="window-width-input">默认窗口大小</label>
+                <span class="setting-description">下次打开时生效。</span>
+              </div>
+              <div class="size-inputs">
+                <input type="number" id="window-width-input" class="number-input" min="400" max="1200" value="720" />
+                <span class="size-separator">×</span>
+                <input type="number" id="window-height-input" class="number-input" min="240" max="800" value="240" />
+              </div>
+            </div>
+            <div class="setting-row">
+              <label for="opacity-slider">背景透明度</label>
+              <div class="opacity-row">
+                <input type="range" id="opacity-slider" class="opacity-slider" min="10" max="100" value="97" />
+                <span id="opacity-value" class="opacity-value">97%</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="settings-section">
+            <h2>输入</h2>
+            <div class="setting-row">
+              <div class="setting-label">
+                <label for="default-mode-select">默认内容模式</label>
+                <span class="setting-description">每次开始新输入时使用。</span>
+              </div>
+              <select id="default-mode-select">
+                <option value="plain">纯文本</option>
+                <option value="markdown">Markdown</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <div class="setting-label">
+                <label for="pure-mode-checkbox">纯净输入模式</label>
+                <span class="setting-description">仅显示输入框。</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="pure-mode-checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="setting-row">
+              <label for="input-font-size-slider">输入框字体大小</label>
+              <div class="font-size-setting">
+                <div class="font-size-control">
+                  <input type="range" id="input-font-size-slider" class="opacity-slider" min="12" max="32" step="1" value="14" />
+                  <span id="input-font-size-value" class="opacity-value">14px</span>
+                </div>
+                <div id="input-font-size-preview" class="font-size-preview">QuickInput 字体预览</div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+  <script type="module" src="/settings.js"></script>
+</body>
+</html>
